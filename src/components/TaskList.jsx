@@ -1,6 +1,6 @@
 
 import TaskItem from './TaskItem'
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import getTodoItems from '../api';
 
 

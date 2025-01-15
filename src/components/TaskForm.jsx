@@ -69,7 +69,7 @@ export default function TaskForm() {
                 </div>
                 <nav className="flex flex-1 flex-col">
                   <ul role="list" className="flex flex-1 flex-col gap-y-7">
-                    
+
                     <li>
                       <div className="text-xs/6 font-semibold text-gray-400">Your teams</div>
                       <ul role="list" className="-mx-2 mt-2 space-y-1">
@@ -184,16 +184,16 @@ export default function TaskForm() {
 
         <div className="lg:pl-72">
           <div className="sticky top-0 z-40 lg:mx-auto lg:max-w-7xl lg:px-8">
-          
+
           </div>
 
           <main className="py-10">
-          <AddTodoButton/>
+            <AddTodoButton />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-               
-                <TaskList/>
-              
-                </div>
+
+              <TaskList />
+
+            </div>
           </main>
         </div>
       </div>

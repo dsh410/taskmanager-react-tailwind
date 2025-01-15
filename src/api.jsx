@@ -3,7 +3,7 @@ import axios from 'axios';
 const getTodoItems = async () => {
     try {
         const response = await axios.get('http://localhost:5000/api/v1/taskitems', {
-            headers:{
+            headers: {
                 'Access-Control-Allow-Origin': 'http://localhost:5173'
             }
         });
