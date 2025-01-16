@@ -1,9 +1,10 @@
 import { PlusIcon } from '@heroicons/react/20/solid'
-
-export default function AddTodoButton() {
+import PropTypes from 'prop-types';
+export default function AddTodoButton({ handleOnClick }) {
   return (
     <>
       <button
+        onClick={handleOnClick}
         type="button"
         className="rounded-full bg-indigo-600 p-2 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
@@ -12,3 +13,9 @@ export default function AddTodoButton() {
     </>
   )
 }
+
+
+
+AddTodoButton.propTypes = {
+  handleOnClick: PropTypes.func.isRequired,
+};

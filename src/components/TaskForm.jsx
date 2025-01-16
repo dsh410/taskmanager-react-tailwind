@@ -26,7 +26,13 @@ function classNames(...classes) {
 }
 
 export default function TaskForm() {
+  const [showAddTodoForm, setShowAddTodoForm] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const handleOnClick = () => {
+    setShowAddTodoForm(!showAddTodoForm);
+    console.log(showAddTodoForm);
+  }
 
   return (
     <>
@@ -180,10 +186,10 @@ export default function TaskForm() {
           </div>
 
           <main className="py-10">
-            <AddTodoButton />
+            <AddTodoButton handleOnClick={handleOnClick} />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-              <TaskList />
+              <TaskList showAddTodoForm={showAddTodoForm} />
 
             </div>
           </main>

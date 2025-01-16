@@ -1,6 +1,9 @@
+
 const TaskInputForm = () => {
+
+
     return (
-        <div className="space-y-10 divide-y divide-gray-900/10">
+        <div className="space-y-10 divide-y divide-gray-900/10  absolute z-10 top-1/4 right-1/4 ">
             <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
 
                 <form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
