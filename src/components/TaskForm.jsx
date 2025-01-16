@@ -26,7 +26,7 @@ function classNames(...classes) {
 }
 
 export default function TaskForm() {
-  const [showAddTodoForm, setShowAddTodoForm] = useState(true);
+  const [showAddTodoForm, setShowAddTodoForm] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const handleOnClick = () => {
