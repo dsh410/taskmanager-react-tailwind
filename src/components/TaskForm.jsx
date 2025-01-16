@@ -30,8 +30,7 @@ export default function TaskForm() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const handleOnClick = () => {
-    setShowAddTodoForm(!showAddTodoForm);
-    console.log(showAddTodoForm);
+    setShowAddTodoForm(true);
   }
 
   return (
@@ -177,7 +176,7 @@ export default function TaskForm() {
             <AddTodoButton handleOnClick={handleOnClick} />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-              <TaskList showAddTodoForm={showAddTodoForm} />
+              <TaskList setShowAddTodoForm={setShowAddTodoForm} showAddTodoForm={showAddTodoForm} />
 
             </div>
           </main>

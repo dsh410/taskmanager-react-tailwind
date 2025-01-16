@@ -1,5 +1,5 @@
-
-const TaskInputForm = () => {
+import PropTypes from 'prop-types';
+const TaskInputForm = ({showAddTodoForm, setShowAddTodoForm}) => {
 
 
     return (
@@ -46,7 +46,7 @@ const TaskInputForm = () => {
                         </div>
                     </div>
                     <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                        <button type="button" className="text-sm/6 font-semibold text-gray-900">
+                        <button type="button" className="text-sm/6 font-semibold text-gray-900" onClick={() => setShowAddTodoForm(!showAddTodoForm)}>
                             Cancel
                         </button>
                         <button
@@ -61,6 +61,11 @@ const TaskInputForm = () => {
 
         </div>
     )
+};
+
+TaskInputForm.propTypes = {
+    showAddTodoForm: PropTypes.func.isRequired,
+    setShowAddTodoForm: PropTypes.func.isRequired,
 };
 
 export default TaskInputForm;

@@ -6,7 +6,7 @@ import getTodoItems from '../api';
 import PropTypes from 'prop-types';
 
 
-export default function TaskList({ showAddTodoForm }) {
+export default function TaskList({ showAddTodoForm, setShowAddTodoForm }) {
 
     const [todoItems, setTodoItems] = useState([]);
 
@@ -29,11 +29,12 @@ export default function TaskList({ showAddTodoForm }) {
 
                 ))}
             </ul>
-            {showAddTodoForm && <TaskInputForm />}
+            {showAddTodoForm && <TaskInputForm setShowAddTodoForm={setShowAddTodoForm} showAddTodoForm={showAddTodoForm} />}
         </>
     )
 }
 
 TaskList.propTypes = {
     showAddTodoForm: PropTypes.bool.isRequired,
+    setShowAddTodoForm: PropTypes.func.isRequired,
 };
