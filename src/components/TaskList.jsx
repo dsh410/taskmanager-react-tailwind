@@ -1,7 +1,6 @@
 
 import TaskItem from './TaskItem'
 import { useEffect, useState } from 'react';
-
 import TaskInputForm from './TaskInputForm';
 import getTodoItems from '../api';
 import PropTypes from 'prop-types';
