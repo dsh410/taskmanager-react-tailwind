@@ -1,6 +1,11 @@
 import { PlusIcon } from '@heroicons/react/20/solid'
 import PropTypes from 'prop-types';
-export default function AddTodoButton({ handleOnClick }) {
+import { useContext } from 'react';
+import TasksContext from '../context/TasksContext';
+
+export default function AddTodoButton() {
+  const { handleOnClick } = useContext(TasksContext);
+
   return (
     <>
       <button

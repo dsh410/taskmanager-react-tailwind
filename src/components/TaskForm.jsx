@@ -13,6 +13,8 @@ import {
 } from '@heroicons/react/24/outline'
 import TaskList from './TaskList'
 import AddTodoButton from './AddTodoButton'
+import { useContext } from 'react'
+import TasksContext from '../context/TasksContext'
 
 
 const teams = [
@@ -26,7 +28,7 @@ function classNames(...classes) {
 }
 
 export default function TaskForm() {
-  const [showAddTodoForm, setShowAddTodoForm] = useState(false);
+  const { showAddTodoForm, setShowAddTodoForm } = useContext(TasksContext);
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const handleOnClick = () => {

@@ -1,30 +1,36 @@
 
 import TaskItem from './TaskItem'
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import TaskInputForm from './TaskInputForm';
-import getTodoItems from '../api';
+import { getTodoItems } from '../utils/api';
 import PropTypes from 'prop-types';
+import TasksContext from '../context/TasksContext';
+
+
+
+
 
 
 export default function TaskList({ showAddTodoForm, setShowAddTodoForm }) {
+    const { setTodoItems, todoItems } = useContext(TasksContext);
 
-    const [todoItems, setTodoItems] = useState([]);
+
 
     useEffect(() => {
-        async function fetchData() {
+        const fetchItems = async () => {
             const items = await getTodoItems();
             setTodoItems(items);
-        }
-        fetchData();
-    }, []);
+        };
+        fetchItems();
+    },[]);
+
 
     return (
         <>
             <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative z-0">
                 {todoItems.map((todo) => (
                     <>
-                        <TaskItem todo={todo} />
-
+                        <TaskItem todo={todo} setShowAddTodoForm={setShowAddTodoForm} showAddTodoForm={showAddTodoForm} />
                     </>
 
                 ))}

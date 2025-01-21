@@ -1,10 +1,19 @@
-import PropTypes from 'prop-types';
 
-export default function TaskItem({ todo }) {
+import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import TasksContext from '../context/TasksContext';
+
+
+
+export default function TaskItem({ todo, }) {
+  const {
+    handleUpdate,
+  } = useContext(TasksContext);
+
 
   return (
     <div>
-      <div key={todo.id} className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+      <div key={todo._id} className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
         <div className="px-4 py-5 sm:px-6">
           <h3>{todo.title}</h3>
         </div>
@@ -19,6 +28,7 @@ export default function TaskItem({ todo }) {
             </button>
             <button
               type="button"
+              onClick={() => handleUpdate(todo._id)}
               className="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
             >
               Update
@@ -40,8 +50,11 @@ export default function TaskItem({ todo }) {
 
 TaskItem.propTypes = {
   todo: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
-  })
+
+  }),
+  setShowAddTodoForm: PropTypes.func.isRequired,
+  showAddTodoForm: PropTypes.bool.isRequired,
 };
