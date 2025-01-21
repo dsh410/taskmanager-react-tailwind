@@ -35,16 +35,19 @@ export const TasksProvider = ({ children }) => {
 
     const handleUpdate = (id) => {
         setId(id);
+        console.log(id);
         setShowAddTodoForm(prev => !prev);
     }
 
-    const handleSaveUpdate = (title, description) => {
+    const handleSaveUpdate = (event,id,title, description) => {
+        event.preventDefault();
         setShowAddTodoForm(prev => !prev)
         // Replace console.log with a proper logging mechanism if needed
         // Example: logToService(id, title, description);
         if(!id || !title ){
             return;
         }
+        console.log(id);
         UpdateTodoItem(id,title,description);
     }
 
@@ -60,6 +63,7 @@ export const TasksProvider = ({ children }) => {
         setDescription,
         handleUpdate,
         handleSaveUpdate,
+        id,
         handleToggleAddTodoForm: () => setShowAddTodoForm(!showAddTodoForm),
     }
     return (
