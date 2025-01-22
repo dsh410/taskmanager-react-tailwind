@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { UpdateTodoItem } from '../utils/api';
+import { UpdateTodoItem, createTodoItem } from '../utils/api';
 
 
 
@@ -16,6 +16,10 @@ export const TasksProvider = ({ children }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setShowAddTodoForm(false);
+    }
+
+    const handleOnClick = () => {
+        setShowAddTodoForm(true);
     }
 
     const handleChange = (event) => {
@@ -42,11 +46,19 @@ export const TasksProvider = ({ children }) => {
         event.preventDefault();
         setShowAddTodoForm(prev => !prev)
 
-        if (!id || !title) {
+        if (!id && !title) {
             return;
         }
-        
-        UpdateTodoItem(id, title, description);
+
+        if (id) {
+            UpdateTodoItem(id, title, description);
+        }
+
+        if (!id) {
+            createTodoItem(title, description);
+        }
+
+
     }
 
     const valueToShare = {
@@ -62,6 +74,7 @@ export const TasksProvider = ({ children }) => {
         handleUpdate,
         handleSaveUpdate,
         id,
+        handleOnClick,
         handleToggleAddTodoForm: () => setShowAddTodoForm(!showAddTodoForm),
     }
     return (
