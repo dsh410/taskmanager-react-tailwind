@@ -25,7 +25,6 @@ export default function TaskList() {
                     <>
                         <TaskItem todo={todo} />
                     </>
-
                 ))}
             </ul>
             {showAddTodoForm && <TaskInputForm />}
