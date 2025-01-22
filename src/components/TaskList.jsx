@@ -15,10 +15,8 @@ export default function TaskList() {
     const { setTodoItems, todoItems, showAddTodoForm } = useContext(TasksContext);
 
     useEffect(() => {
-
         getTodoItems(setTodoItems);
     }, [todoItems]);
-
 
     return (
         <>

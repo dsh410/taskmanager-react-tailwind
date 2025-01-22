@@ -35,3 +35,23 @@ export const UpdateTodoItem = async (id, title, description) => {
     }
 };
 
+export const createTodoItem = async ( title, description) => {
+    try {
+        await axios.post(`http://localhost:5000/api/v1/taskitems/`,
+            {
+                title,
+                description
+            },
+            {
+                headers: {
+                    'Access-Control-Allow-Origin': 'http://localhost:5173'
+                }
+            }
+        );
+
+    } catch (error) {
+        console.error('Error fetching todo items:', error);
+        throw error;
+    }
+};
+
