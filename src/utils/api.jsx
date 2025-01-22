@@ -35,7 +35,7 @@ export const UpdateTodoItem = async (id, title, description) => {
     }
 };
 
-export const createTodoItem = async ( title, description) => {
+export const createTodoItem = async (title, description) => {
     try {
         await axios.post(`http://localhost:5000/api/v1/taskitems/`,
             {
