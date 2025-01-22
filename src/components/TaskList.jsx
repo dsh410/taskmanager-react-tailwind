@@ -6,11 +6,6 @@ import { getTodoItems } from '../utils/api';
 import PropTypes from 'prop-types';
 import TasksContext from '../context/TasksContext';
 
-
-
-
-
-
 export default function TaskList() {
     const { setTodoItems, todoItems, showAddTodoForm } = useContext(TasksContext);
 
