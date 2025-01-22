@@ -17,7 +17,7 @@ export const getTodoItems = async (setTodoItems) => {
 
 export const UpdateTodoItem = async (id, title, description) => {
     try {
-        const response = await axios.put(`http://localhost:5000/api/v1/taskitems/${id}`,
+        await axios.put(`http://localhost:5000/api/v1/taskitems/${id}`,
             {
                 title,
                 description
@@ -28,7 +28,7 @@ export const UpdateTodoItem = async (id, title, description) => {
                 }
             }
         );
-        
+
     } catch (error) {
         console.error('Error fetching todo items:', error);
         throw error;
