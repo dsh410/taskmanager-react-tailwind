@@ -28,7 +28,7 @@ export const UpdateTodoItem = async (id, title, description) => {
                 }
             }
         );
-        console.log(response);
+        
     } catch (error) {
         console.error('Error fetching todo items:', error);
         throw error;
