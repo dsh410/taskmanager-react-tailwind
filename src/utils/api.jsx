@@ -55,3 +55,20 @@ export const createTodoItem = async (title, description) => {
     }
 };
 
+export const deleteTodoItem = async (id) => {
+    try {
+        await axios.delete(`http://localhost:5000/api/v1/taskitems/${id}`,
+
+            {
+                headers: {
+                    'Access-Control-Allow-Origin': 'http://localhost:5173'
+                }
+            }
+        );
+
+    } catch (error) {
+        console.error('Error fetching todo items:', error);
+        throw error;
+    }
+};
+

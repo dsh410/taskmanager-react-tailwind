@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { UpdateTodoItem, createTodoItem } from '../utils/api';
+import { UpdateTodoItem, createTodoItem, deleteTodoItem } from '../utils/api';
 
 
 
@@ -42,6 +42,10 @@ export const TasksProvider = ({ children }) => {
         setShowAddTodoForm(prev => !prev);
     }
 
+    const handleDelete = (id) => {
+        deleteTodoItem(id);
+    }
+
     const handleSaveUpdate = (event, id, title, description) => {
         event.preventDefault();
         setShowAddTodoForm(prev => !prev)
@@ -75,6 +79,7 @@ export const TasksProvider = ({ children }) => {
         handleSaveUpdate,
         id,
         handleOnClick,
+        handleDelete,
         handleToggleAddTodoForm: () => setShowAddTodoForm(!showAddTodoForm),
     }
     return (
