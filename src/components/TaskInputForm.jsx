@@ -35,7 +35,7 @@ const TaskInputForm = () => {
                                             type="text"
                                             value={title}
                                             placeholder="todo item"
-                                            onChange={()=> handleChange(event)}
+                                            onChange={() => handleChange(event)}
                                             className="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
                                         />
                                     </div>
@@ -77,7 +77,6 @@ const TaskInputForm = () => {
                     </div>
                 </form>
             </div>
-
         </div>
     )
 };

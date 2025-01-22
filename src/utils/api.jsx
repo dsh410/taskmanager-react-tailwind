@@ -1,14 +1,14 @@
 
 import axios from 'axios';
 
-export const getTodoItems = async () => {
+export const getTodoItems = async (setTodoItems) => {
     try {
         const response = await axios.get('http://localhost:5000/api/v1/taskitems', {
             headers: {
                 'Access-Control-Allow-Origin': 'http://localhost:5173'
             }
         });
-        return response.data.result;
+        setTodoItems(response.data.result)
     } catch (error) {
         console.error('Error fetching todo items:', error);
         throw error;

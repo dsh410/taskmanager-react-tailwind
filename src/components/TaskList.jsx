@@ -11,18 +11,13 @@ import TasksContext from '../context/TasksContext';
 
 
 
-export default function TaskList({ showAddTodoForm, setShowAddTodoForm }) {
-    const { setTodoItems, todoItems } = useContext(TasksContext);
-
-
+export default function TaskList() {
+    const { setTodoItems, todoItems, showAddTodoForm } = useContext(TasksContext);
 
     useEffect(() => {
-        const fetchItems = async () => {
-            const items = await getTodoItems();
-            setTodoItems(items);
-        };
-        fetchItems();
-    },[]);
+
+        getTodoItems(setTodoItems);
+    }, [todoItems]);
 
 
     return (
@@ -30,12 +25,12 @@ export default function TaskList({ showAddTodoForm, setShowAddTodoForm }) {
             <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative z-0">
                 {todoItems.map((todo) => (
                     <>
-                        <TaskItem todo={todo}  />
+                        <TaskItem todo={todo} />
                     </>
 
                 ))}
             </ul>
-            {showAddTodoForm && <TaskInputForm  />}
+            {showAddTodoForm && <TaskInputForm />}
         </>
     )
 }

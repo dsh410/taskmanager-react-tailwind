@@ -19,8 +19,6 @@ export default function AddTodoButton() {
   )
 }
 
-
-
 AddTodoButton.propTypes = {
   handleOnClick: PropTypes.func.isRequired,
 };

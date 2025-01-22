@@ -46,8 +46,6 @@ export default function TaskItem({ todo, }) {
   )
 }
 
-
-
 TaskItem.propTypes = {
   todo: PropTypes.shape({
     _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,

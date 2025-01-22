@@ -13,7 +13,6 @@ export const TasksProvider = ({ children }) => {
     const [description, setDescription] = useState('');
     const [id, setId] = useState('');
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
         setShowAddTodoForm(false);
@@ -25,7 +24,7 @@ export const TasksProvider = ({ children }) => {
         if (name === 'title') {
             setTitle(value);
         }
-        
+
         if (name === 'description') {
             setDescription(value);
 
@@ -39,16 +38,15 @@ export const TasksProvider = ({ children }) => {
         setShowAddTodoForm(prev => !prev);
     }
 
-    const handleSaveUpdate = (event,id,title, description) => {
+    const handleSaveUpdate = (event, id, title, description) => {
         event.preventDefault();
         setShowAddTodoForm(prev => !prev)
-        // Replace console.log with a proper logging mechanism if needed
-        // Example: logToService(id, title, description);
-        if(!id || !title ){
+
+        if (!id || !title) {
             return;
         }
-        console.log(id);
-        UpdateTodoItem(id,title,description);
+        
+        UpdateTodoItem(id, title, description);
     }
 
     const valueToShare = {
