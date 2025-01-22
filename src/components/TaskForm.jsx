@@ -43,7 +43,6 @@ export default function TaskForm() {
             transition
             className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
           />
-
           <div className="fixed inset-0 flex">
             <DialogPanel
               transition
@@ -132,7 +131,6 @@ export default function TaskForm() {
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
                 <li>
-
                 </li>
                 <li>
                   <div className="text-xs/6 font-semibold text-gray-400">Your Todo Items</div>
@@ -168,18 +166,13 @@ export default function TaskForm() {
             </nav>
           </div>
         </div>
-
         <div className="lg:pl-72">
           <div className="sticky top-0 z-40 lg:mx-auto lg:max-w-7xl lg:px-8">
-
           </div>
-
           <main className="py-10">
             <AddTodoButton handleOnClick={handleOnClick} />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
               <TaskList setShowAddTodoForm={setShowAddTodoForm} showAddTodoForm={showAddTodoForm} />
-
             </div>
           </main>
         </div>
