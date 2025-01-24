@@ -1,6 +1,7 @@
-import { createContext, useState } from 'react';
+import { createContext, useState , useCallback} from 'react';
 import PropTypes from 'prop-types';
 import { UpdateTodoItem, createTodoItem, deleteTodoItem } from '../utils/api';
+import axios from 'axios';
 
 
 
@@ -12,14 +13,21 @@ export const TasksProvider = ({ children }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [id, setId] = useState('');
+    const [refetchTrigger, setRefetchTrigger] = useState(false);
+
+    const handleRefetch = () => {
+        setRefetchTrigger(true);
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         setShowAddTodoForm(false);
     }
 
-    const handleOnClick = () => {
+    const handleOnClickCreate = () => {
         setShowAddTodoForm(true);
+   
+        
     }
 
     const handleChange = (event) => {
@@ -38,12 +46,12 @@ export const TasksProvider = ({ children }) => {
 
     const handleUpdate = (id) => {
         setId(id);
-        console.log(id);
         setShowAddTodoForm(prev => !prev);
     }
 
     const handleDelete = (id) => {
         deleteTodoItem(id);
+        handleRefetch();
     }
 
     const handleSaveUpdate = (event, id, title, description) => {
@@ -61,9 +69,21 @@ export const TasksProvider = ({ children }) => {
         if (!id) {
             createTodoItem(title, description);
         }
-
-
+        handleRefetch();
+        setTitle('');
+        setDescription('');
     }
+
+     const fetchTodoItems = useCallback(async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/v1/taskitems');
+                setTodoItems(response.data.result);
+                return response.data.result;
+            } catch (error) {
+                console.error('Error fetching todo items:', error);
+                throw error;
+            }
+        }, [setTodoItems]);
 
     const valueToShare = {
         title,
@@ -78,8 +98,12 @@ export const TasksProvider = ({ children }) => {
         handleUpdate,
         handleSaveUpdate,
         id,
-        handleOnClick,
+        handleOnClickCreate,
         handleDelete,
+        fetchTodoItems,
+        refetchTrigger,
+        handleRefetch,
+        setRefetchTrigger,
         handleToggleAddTodoForm: () => setShowAddTodoForm(!showAddTodoForm),
     }
     return (

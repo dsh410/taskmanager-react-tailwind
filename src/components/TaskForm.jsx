@@ -31,9 +31,6 @@ export default function TaskForm() {
   const { showAddTodoForm, setShowAddTodoForm } = useContext(TasksContext);
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  const handleOnClick = () => {
-    setShowAddTodoForm(true);
-  }
 
   return (
     <>
@@ -170,7 +167,7 @@ export default function TaskForm() {
           <div className="sticky top-0 z-40 lg:mx-auto lg:max-w-7xl lg:px-8">
           </div>
           <main className="py-10">
-            <AddTodoButton handleOnClick={handleOnClick} />
+            <AddTodoButton />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <TaskList setShowAddTodoForm={setShowAddTodoForm} showAddTodoForm={showAddTodoForm} />
             </div>
