@@ -1,4 +1,4 @@
-import { createContext, useState , useCallback} from 'react';
+import { createContext, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { UpdateTodoItem, createTodoItem, deleteTodoItem } from '../utils/api';
 import axios from 'axios';
@@ -26,8 +26,8 @@ export const TasksProvider = ({ children }) => {
 
     const handleOnClickCreate = () => {
         setShowAddTodoForm(true);
-   
-        
+
+
     }
 
     const handleChange = (event) => {
@@ -74,16 +74,16 @@ export const TasksProvider = ({ children }) => {
         setDescription('');
     }
 
-     const fetchTodoItems = useCallback(async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/v1/taskitems');
-                setTodoItems(response.data.result);
-                return response.data.result;
-            } catch (error) {
-                console.error('Error fetching todo items:', error);
-                throw error;
-            }
-        }, [setTodoItems]);
+    const fetchTodoItems = useCallback(async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/v1/taskitems');
+            setTodoItems(response.data.result);
+            return response.data.result;
+        } catch (error) {
+            console.error('Error fetching todo items:', error);
+            throw error;
+        }
+    }, [setTodoItems]);
 
     const valueToShare = {
         title,
