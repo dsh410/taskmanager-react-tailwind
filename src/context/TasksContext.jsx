@@ -1,6 +1,6 @@
 import { createContext, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { UpdateTodoItem, createTodoItem, deleteTodoItem } from '../utils/api';
+import { UpdateTodoItem, createTodoItem, deleteTodoItem, UpdateTodoStatues } from '../utils/api';
 import axios from 'axios';
 
 
@@ -14,6 +14,7 @@ export const TasksProvider = ({ children }) => {
     const [description, setDescription] = useState('');
     const [id, setId] = useState('');
     const [todoStatues, setTodoStatues] = useState(false);
+    const [completed, setIsCompleted] = useState(false);
     const [refetchTrigger, setRefetchTrigger] = useState(false);
 
     const handleRefetch = () => {
@@ -45,9 +46,20 @@ export const TasksProvider = ({ children }) => {
 
     }
 
-    const handleUpdate = (id) => {
+    const handleUpdate = (id, event) => {
         setId(id);
-        setShowAddTodoForm(prev => !prev);
+
+        if (event.target.innerText === 'Done') {
+            console.log('completed', completed);
+
+            UpdateTodoStatues(id, completed);
+
+        }
+
+        if (event.target.innerText === 'Update') {
+            setShowAddTodoForm(prev => !prev);
+        }
+        handleRefetch();
     }
 
     const handleDelete = (id) => {
@@ -108,6 +120,8 @@ export const TasksProvider = ({ children }) => {
         todoStatues,
         setTodoStatues,
         handleToggleAddTodoForm: () => setShowAddTodoForm(!showAddTodoForm),
+        setIsCompleted,
+
     }
     return (
         <TasksContext.Provider value={valueToShare}>
