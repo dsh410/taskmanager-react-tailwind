@@ -6,7 +6,13 @@ import PropTypes from 'prop-types';
 import TasksContext from '../context/TasksContext';
 
 export default function TaskList() {
-    const { todoItems, showAddTodoForm, fetchTodoItems, refetchTrigger, setRefetchTrigger } = useContext(TasksContext);
+    const { 
+        todoItems, 
+        showAddTodoForm, 
+        fetchTodoItems, 
+        refetchTrigger, 
+        setRefetchTrigger 
+    } = useContext(TasksContext);
 
 
 
