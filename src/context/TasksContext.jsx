@@ -13,6 +13,7 @@ export const TasksProvider = ({ children }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [id, setId] = useState('');
+    const [todoStatues, setTodoStatues] = useState(false);
     const [refetchTrigger, setRefetchTrigger] = useState(false);
 
     const handleRefetch = () => {
@@ -104,6 +105,8 @@ export const TasksProvider = ({ children }) => {
         refetchTrigger,
         handleRefetch,
         setRefetchTrigger,
+        todoStatues,
+        setTodoStatues,
         handleToggleAddTodoForm: () => setShowAddTodoForm(!showAddTodoForm),
     }
     return (

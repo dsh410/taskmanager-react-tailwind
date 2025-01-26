@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import TasksContext from '../context/TasksContext';
 
 export default function TaskList() {
-    const { 
-        todoItems, 
-        showAddTodoForm, 
-        fetchTodoItems, 
-        refetchTrigger, 
-        setRefetchTrigger 
+    const {
+        todoItems,
+        showAddTodoForm,
+        fetchTodoItems,
+        refetchTrigger,
+        setRefetchTrigger,
+        todoStatues,
     } = useContext(TasksContext);
 
 
@@ -27,13 +28,24 @@ export default function TaskList() {
 
     return (
         <>
-            <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative z-0">
-                {todoItems.map((todo) => (
+            {!todoStatues && (<ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative z-0">
+                {todoItems.filter(todo => todo.isCompleted === false).map((todo) => (
                     <>
                         <TaskItem todo={todo} />
                     </>
                 ))}
-            </ul>
+            </ul>)
+            }
+
+            {todoStatues && (<ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative z-0">
+                {todoItems.filter(todo => todo.isCompleted === true).map((todo) => (
+                    <>
+                        <TaskItem todo={todo} />
+                    </>
+                ))}
+            </ul>)
+            }
+
             {showAddTodoForm && <TaskInputForm />}
         </>
     )
