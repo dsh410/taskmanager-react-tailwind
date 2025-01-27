@@ -1,13 +1,13 @@
-import { 
-    createContext, 
-    useState, 
-    useCallback 
+import {
+    createContext,
+    useState,
+    useCallback
 } from 'react';
 import PropTypes from 'prop-types';
-import { 
-    UpdateTodoItem, 
-    createTodoItem, 
-    deleteTodoItem, 
+import {
+    UpdateTodoItem,
+    createTodoItem,
+    deleteTodoItem,
     UpdateTodoStatues 
 } from '../utils/api';
 import axios from 'axios';
@@ -33,68 +33,65 @@ export const TasksProvider = ({ children }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setShowAddTodoForm(false);
-    }
+    };
 
     const handleOnClickCreate = () => {
         setShowAddTodoForm(true);
-
-
     }
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+const { name, value } = event.target;
 
-        if (name === 'title') {
-            setTitle(value);
-        }
+if (name === 'title') {
+    setTitle(value);
+}
 
-        if (name === 'description') {
-            setDescription(value);
+if (name === 'description') {
+    setDescription(value);
 
-        }
+}
 
     }
 
-    const handleUpdate = (id, event) => {
-        setId(id);
+const handleUpdate = (id, event) => {
+    setId(id);
 
-        if (event.target.innerText === 'Done') {
-            console.log('completed', completed);
+    if (event.target.innerText === 'Done') {
+        console.log('completed', completed);
 
             UpdateTodoStatues(id, completed);
 
-        }
-
-        if (event.target.innerText === 'Update') {
-            setShowAddTodoForm(prev => !prev);
-        }
-        handleRefetch();
     }
 
-    const handleDelete = (id) => {
-        deleteTodoItem(id);
-        handleRefetch();
+    if (event.target.innerText === 'Update') {
+        setShowAddTodoForm(prev => !prev);
     }
+    handleRefetch();
+}
 
-    const handleSaveUpdate = (event, id, title, description) => {
-        event.preventDefault();
-        setShowAddTodoForm(prev => !prev)
+const handleDelete = (id) => {
+    deleteTodoItem(id);
+    handleRefetch();
+}
 
-        if (!id && !title) {
-            return;
-        }
+const handleSaveUpdate = (event, id, title, description) => {
+    event.preventDefault();
+    setShowAddTodoForm(prev => !prev)
 
-        if (id) {
-            console.log('id', id);
-            UpdateTodoItem(id, title, description);
+    if (!id && !title) {
+        return;
+    }
+    if (id) {
+        console.log('id', id);
+        UpdateTodoItem(id, title, description);
         }
 
         if (!id) {
-            createTodoItem(title, description);
-        }
-        handleRefetch();
-        setTitle('');
-        setDescription('');
+        createTodoItem(title, description);
+    }
+    handleRefetch();
+    setTitle('');
+    setDescription('');
     }
 
     const fetchTodoItems = useCallback(async () => {

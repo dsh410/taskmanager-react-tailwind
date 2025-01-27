@@ -14,12 +14,12 @@ function classNames(...classes) {
 }
 
 export default function Home() {
-  const { 
-    showAddTodoForm, 
-    setShowAddTodoForm, 
-    setTodoStatues, 
-    setIsCompleted, 
-    setId, 
+  const {
+    showAddTodoForm,
+    setShowAddTodoForm,
+    setTodoStatues,
+    setIsCompleted,
+    setId,
   } = useContext(TasksContext);
 
   const handleClick = (name) => {
