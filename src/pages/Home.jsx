@@ -14,16 +14,24 @@ function classNames(...classes) {
 }
 
 export default function Home() {
-  const { showAddTodoForm, setShowAddTodoForm, setTodoStatues, setIsCompleted } = useContext(TasksContext);
+  const { 
+    showAddTodoForm, 
+    setShowAddTodoForm, 
+    setTodoStatues, 
+    setIsCompleted, 
+    setId, 
+  } = useContext(TasksContext);
 
   const handleClick = (name) => {
     if (name === 'Incompleted') {
       setIsCompleted(true);
       setTodoStatues(false);
+      setId('');
     }
     if (name === 'Completed') {
       setIsCompleted(false);
       setTodoStatues(true);
+      setId('');
 
     }
   }

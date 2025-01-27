@@ -30,7 +30,7 @@ export default function TaskItem({ todo, }) {
             </button>
             <button
               type="button"
-              onClick={() => handleUpdate(todo._id)}
+              onClick={() => handleUpdate(todo._id, event)}
               className="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
             >
               Update

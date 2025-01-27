@@ -1,6 +1,15 @@
-import { createContext, useState, useCallback } from 'react';
+import { 
+    createContext, 
+    useState, 
+    useCallback 
+} from 'react';
 import PropTypes from 'prop-types';
-import { UpdateTodoItem, createTodoItem, deleteTodoItem, UpdateTodoStatues } from '../utils/api';
+import { 
+    UpdateTodoItem, 
+    createTodoItem, 
+    deleteTodoItem, 
+    UpdateTodoStatues 
+} from '../utils/api';
 import axios from 'axios';
 
 
@@ -76,6 +85,7 @@ export const TasksProvider = ({ children }) => {
         }
 
         if (id) {
+            console.log('id', id);
             UpdateTodoItem(id, title, description);
         }
 
@@ -110,6 +120,7 @@ export const TasksProvider = ({ children }) => {
         setDescription,
         handleUpdate,
         handleSaveUpdate,
+        setId,
         id,
         handleOnClickCreate,
         handleDelete,
